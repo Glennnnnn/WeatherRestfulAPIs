@@ -3,6 +3,7 @@ package com.glenn.weatherRestfulAPIs;
 import com.glenn.weatherRestfulAPIs.dao.ApiKeyRepository;
 import com.glenn.weatherRestfulAPIs.dao.WeatherDataRepository;
 import com.glenn.weatherRestfulAPIs.entity.dbOrm.ApiKey;
+import com.glenn.weatherRestfulAPIs.entity.dbOrm.WeatherData;
 import com.glenn.weatherRestfulAPIs.service.Impl.WeatherServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,6 +17,7 @@ import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @Author Liu Jialin

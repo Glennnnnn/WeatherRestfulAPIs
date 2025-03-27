@@ -54,6 +54,17 @@ public class WeatherServiceImpl implements WeatherService {
         return description;
     }
 
+    @Override
+    public String queryDataFromDBByCityAndCountry(String city, String country) {
+        WeatherData result = weatherDataRepository.findByCityAndCountry(city, country);
+        if(result != null){
+            return result.getDescription();
+        }else{
+            throw new RuntimeException("Record does not exist!");
+        }
+
+    }
+
     public boolean checkAndUpdateApiKey(String apiKey) {
         // Check if API key exists
         Optional<ApiKey> optionalApiKey = apiKeyRepository.findByKeyValue(apiKey);

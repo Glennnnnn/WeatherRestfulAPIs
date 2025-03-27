@@ -57,4 +57,31 @@ public class WeatherController {
         return responseDto;
     }
 
+    @GetMapping("/weatherDataFromDB")
+    public ResponseDto queryWeatherDataFromDB(@RequestParam(required = false) String city,
+                                        @RequestParam(required = false) String country){
+        ResponseDto responseDto = new ResponseDto();
+        // Check if any parameter is missing
+        if (city == null || city.isEmpty()) {
+            return new ResponseDto(400, "City parameter is missing.");
+        }
+
+        if (country == null || country.isEmpty()) {
+            return new ResponseDto(400, "Country parameter is missing.");
+        }
+        String result = null;
+        try{
+            result = weatherService.queryDataFromDBByCityAndCountry(city, country);
+        }catch (Exception e){
+            responseDto.setCode(400);
+            responseDto.setMsg(e.getMessage());
+            responseDto.setData(null);
+            return responseDto;
+        }
+        responseDto.setCode(200);
+        responseDto.setMsg("Success");
+        responseDto.setData(result);
+        return responseDto;
+    }
+
 }

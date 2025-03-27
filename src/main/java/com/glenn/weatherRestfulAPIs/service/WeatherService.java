@@ -10,4 +10,6 @@ package com.glenn.weatherRestfulAPIs.service;
  */
 public interface WeatherService {
     String requestForWeatherData(String city, String country, String apiKey);
+
+    String queryDataFromDBByCityAndCountry(String city, String country);
 }
